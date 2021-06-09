@@ -35,12 +35,12 @@ def main():
             p = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
             out, err = p.communicate()
             if "1 received" in str(out):
+                print(".")
                 if ledOn:
                     led_off(PIN)
                     ledOn = False
                     message = "{}\n".format(time.time())
                     write_to_file(message)
-                print(".")
             else:
                 print("Internet connection down")
                 if not ledOn:
